@@ -1,20 +1,16 @@
 package br.com.senai.model;
 
-import br.com.senai.persistence.BancoItem;
-
 public class Item {
 
-	public int id;
+	public  int id;
 	public String nome;
 	public int qtd;
 	public float valorUnidade;
 	public String desc;
-
-	public Item() {
-		BancoItem banco = new BancoItem(); // Adicionar o id do item.
-		id = banco.getItens().size() + 1;
+	
+	public void setId(int id) {
+		this.id = id;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -50,5 +46,7 @@ public class Item {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	
 
 }
+
