@@ -2,17 +2,20 @@ package br.com.senai.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import br.com.senai.model.Item;
 
 public class BancoItem {
-
-	private static List<Item> itens = new ArrayList<>();
 	
-	public static void removerItem(Item item) {
+	private Scanner input = new Scanner(System.in);
+	
+	public static List<Item> itens = new ArrayList<>();
+	
+	public static void removerItem(int id) {
 		for (int i = 0; i < itens.size(); i++) {
-			if (itens.get(i).getId() == item.getId()) { // Metodo utilizado para remover item do estoque. 
-				itens.remove(i);						// Obs. OpÁ„o remover ainda n„o criada.
+			if (itens.get(i).getId() == id) { // Metodo utilizado para remover item do estoque. 
+				itens.remove(i);
 			}
 		}
 	}
@@ -21,8 +24,32 @@ public class BancoItem {
 		itens.add(item); // Adicionar um item na lista itens
 	}
 
-	public List<Item> getItens() {
-		return itens;
+	public void getItens() { // Mostra os itens cadastrados em um formato de lista
+		for(int i = 0; i < itens.size() && itens.size() > 0; i++) {
+			System.out.println("["+itens.get(i).getId()+"]"+"->"+itens.get(i).getNome());
+		}
+		System.out.println("["+(itens.size()+1)+"]-> Sair");
+			
 	}
-
+	
+	public void ExpandItem(){ // seleciona um item da lista e mostra seus detalhes
+		System.out.print("Expandir item: ");
+		try {
+			int expand = Integer.parseInt(input.next());
+			if(expand <= itens.size() && expand > 0) {
+				System.out.println(itens.get(expand-1).getNome());
+				System.out.println(itens.get(expand-1).getQtd());
+				System.out.println(itens.get(expand-1).getValorUnidade());
+				System.out.println(itens.get(expand-1).getDesc());
+			}
+			else if(expand == (itens.size()+1)) {
+					
+			}
+			else {
+				System.out.print("Comando inv√°lido, tente novamente. \n");		
+			}
+		}catch(Exception e) {
+			System.out.print("Comando inv√°lido, tente novamente. \n");		
+		}
+	}
 }
