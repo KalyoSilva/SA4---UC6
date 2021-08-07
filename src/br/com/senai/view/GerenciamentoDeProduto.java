@@ -9,23 +9,22 @@ import br.com.senai.persistence.BancoItem;
 public class GerenciamentoDeProduto {
 	
 	// Criando banco na classe BancoItem.
-	private BancoItem banco = new BancoItem();
+	public static  BancoItem banco = new BancoItem();
 	private Scanner read = new Scanner(System.in);
 
-	public void menu() {
+	public void menuGerenciamento() {
 		
-		// OpÁıes de gerenciamento.
+		// Op√ß√µes de gerenciamento.
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("(1) Adicionar \n");
 		builder.append("(2) Remover \n");
 		builder.append("(3) Consultar \n");
-		builder.append("(4) Listar \n");
-		builder.append("(5) Voltar \n");
-		builder.append("Escolha uma opÁ„o: ");
+		builder.append("(4) Voltar \n");
+		builder.append("Escolha uma op√ß√£o: ");
 		System.out.println(builder);
 		
-		// Switch utilizado para as opÁıes de gerenciamento.
+		// Switch utilizado para as op√ß√µes de gerenciamento.
 		switch (read.nextInt()) {
 		case 1:
 			adicionarProduto();
@@ -34,21 +33,17 @@ public class GerenciamentoDeProduto {
 			removerProduto();
 			break;
 		case 3:
-			consultarProduto();
-			
-			break;
-		case 4:
 			listarProduto();
 			break;
-		case 5:
+		case 4:
 			Menu menu = new Menu();
 			menu.menu();
 			break;
 		default:
-			System.out.println("Comando inv·lido, tente novamente.");
+			System.out.println("Comando inv√°lido, tente novamente.");
 			break;
 		}
-		menu();
+		menuGerenciamento();
 		
 
 	}
@@ -57,35 +52,56 @@ public class GerenciamentoDeProduto {
 	
 	private void adicionarProduto() {
 		try {
-			// Nome, quantidade, valor, descriÁ„o, sendo adicionados ao item.
+			// Nome, quantidade, valor, descri√ß√£o e id sendo adicionados ao item.
 			Item item = new Item();
 			System.out.print("Informe o nome do produto: ");
 			item.setNome(read.next());
+			read.nextLine();
 			System.out.print("\nInforme a quantidade do produto: ");
 			item.setQtd(read.nextInt());
 			System.out.print("\nInforme o valor do produto: ");
 			item.setValorUnidade(read.nextFloat());
-			System.out.print("\nInforme a descriÁ„o do produto: ");
-			item.setDesc(read.next());
+			read.nextLine();
+			System.out.print("\nInforme a descri√ß√£o do produto: ");
+			item.setDesc(read.nextLine());
+			item.setId(BancoItem.itens.size()+1);
 			// Item sendo adicionado ao banco
 			banco.adicionarItem(item);
-			
 		} catch (InputMismatchException ex) {
-			System.out.println("Um erro ocorreu, tente novamente."); // Caso de valor inv·lido
+			System.out.println("Um erro ocorreu, tente novamente."); // Caso de valor inv√°lido
 			ex.printStackTrace();
 		}
 	}
 
 	private void removerProduto() {
-		// Precisa ser feito.
+		
+		//Mostrando uma lista de itens cadastrados, permitindo o usu√°rio escolher o item que deseja remover atrav√©s do id.
+		//Obs. o usu√°rio ir√° sair do aplicativo se digitar um n√∫mero maior do que o tamanho do Array do banco ou valor inv√°lido.
+		banco.getItens();
+		System.out.print("Remover item: ");
+		try {
+			int remove = Integer.parseInt(read.next());
+			if(remove <= BancoItem.itens.size() && remove > 0) {
+				BancoItem.removerItem(remove);
+			}
+			else if(remove == (BancoItem.itens.size()+1)) {
+			}
+			else {
+				System.out.print("Comando inv√°lido, tente novamente. \n");		
+			}
+		}catch(Exception e){
+			
+			System.out.print("Comando inv√°lido, tente novamente. \n");
+			
+		}
 	}
 
-	private void consultarProduto() {
-		// Precisa ser feito.
-	}
 
 	private void listarProduto() {
-		// Precisa ser feito.
+		//Mostrando uma lista de itens cadastrados, permitindo o usu√°rio escolher o item que deseja expandir atrav√©s do id.
+		banco.getItens();
+		banco.ExpandItem();
+		
 	}
 
 }
