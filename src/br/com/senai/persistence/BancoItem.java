@@ -25,10 +25,10 @@ public class BancoItem {
 	}
 
 	public void getItens() { // Mostra os itens cadastrados em um formato de lista
+		System.out.println("------------------------------------------|");
+		System.out.println("             ITENS CADASTRADOS            |");
+		System.out.println("------------------------------------------|");
 		for(int i = 0; i < itens.size() && itens.size() > 0; i++) {
-			System.out.println("------------------------------------------|");
-			System.out.println("             ITENS CADASTRADOS            |");
-			System.out.println("------------------------------------------|");
 			System.out.println("["+itens.get(i).getId()+"]"+"->"+itens.get(i).getNome());
 		}
 		System.out.println("["+(itens.size()+1)+"]->Sair");
@@ -52,11 +52,11 @@ public class BancoItem {
 			}
 			else {
 				System.out.println("------------------------------------------|");
-				System.out.print("Comando inv√°lido, tente novamente. \n");		
+				System.out.print("Comando inv·lido, tente novamente. \n");		
 			}
 		}catch(Exception e) {
 			System.out.println("------------------------------------------|");
-			System.out.print("Comando inv√°lido, tente novamente. \n");		
+			System.out.print("Comando inv·lido, tente novamente. \n");		
 		}
 	}
 }
