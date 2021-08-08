@@ -14,9 +14,9 @@ public class Menu {
 		builder.append("                  MENU                    |\n");
 		builder.append("------------------------------------------|\n");
 		builder.append("(1) Gerenciamento de Produtos \n");
-		builder.append("(2) Gerenciamento de Compra e Venda \n");
+		builder.append("(2) Gerenciamento de Usuários \n");
 		builder.append("(3) Sair \n");
-		builder.append("------------------------------------------|\n");
+		builder.append("\n");
 		builder.append("Escolha uma opção: ");
 		System.out.print(builder.toString());
 		
@@ -28,14 +28,15 @@ public class Menu {
 			ger.menuGerenciamento();
 			break;
 		case 2:
-			//Case 2 para próxima atividade utilizando banco de dados e interface. 
+			GerenciamentoDePessoa gerPes = new GerenciamentoDePessoa();
+			gerPes.menuPessoa();
 			break;
 		case 3:
 			break;
 		default:
 			break;
 		}
-		
+		System.out.print("Programa Finalizado");
 		read.close();
 	}
 }

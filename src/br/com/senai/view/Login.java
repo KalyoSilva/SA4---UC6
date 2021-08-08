@@ -47,7 +47,6 @@ public class Login {
 		if(flag) {
 			System.out.println("\nUsuário ou senha incorreto");
 		}
-		
 		read.close();
 	}
 	

@@ -86,7 +86,7 @@ public class GerenciamentoDeProduto {
 			int remove = Integer.parseInt(read.next());
 			if(remove <= BancoItem.itens.size() && remove > 0) {
 				BancoItem.removerItem(remove);
-				System.out.println("Usuário removido com Sucesso!");
+				System.out.println("item removido com Sucesso!");
 			}
 			else if(remove == (BancoItem.itens.size()+1)) {
 			}
