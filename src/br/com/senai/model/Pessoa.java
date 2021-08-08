@@ -1,11 +1,12 @@
 package br.com.senai.model;
 
+
 public class Pessoa {
 
 	private String nome;
 	private String senha;
 	private boolean permissoes;
-
+	
 	protected Pessoa(boolean perm) {
 		permissoes = perm;
 	}
@@ -33,8 +34,6 @@ public class Pessoa {
 	public void setPermissoes(boolean permissoes) {
 		this.permissoes = permissoes;
 	}
-	
-	
 	
 
 }
