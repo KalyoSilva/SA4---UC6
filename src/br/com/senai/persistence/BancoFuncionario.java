@@ -45,26 +45,33 @@ public class BancoFuncionario {
 
 	public static void expandFuncio() {
 		System.out.println("------------------------------------------|");
-		System.out.print("Expandir item: ");
-		try {
-			int expand = Integer.parseInt(read.next());
-			if(expand <= funcionarios.size() && expand > 0) {
-				System.out.println("------------------------------------------|");
-				System.out.println("Nome: "+funcionarios.get(expand-1).getNome());
-				System.out.println("Senha: "+funcionarios.get(expand-1).getSenha());
-				System.out.println("Admin: "+funcionarios.get(expand-1).isPermissoes());
-			}
-			else if(expand == (funcionarios.size()+1)) {
-					
-			}
-			else {
+		System.out.print("Deseja Expandir algum item? (S/N): ");
+		String cmdExpand = read.nextLine();
+		System.out.println("------------------------------------------|");
+		if(cmdExpand.equals("s") || cmdExpand.equals("S")) {
+			System.out.println("------------------------------------------|");
+			System.out.print("Expandir item: ");
+			try {
+				int expand = Integer.parseInt(read.next());
+				if(expand <= funcionarios.size() && expand > 0) {
+					System.out.println("------------------------------------------|");
+					System.out.println("Nome: "+funcionarios.get(expand-1).getNome());
+					System.out.println("Senha: "+funcionarios.get(expand-1).getSenha());
+					System.out.println("Admin: "+funcionarios.get(expand-1).isPermissoes());
+				}
+				else if(expand == (funcionarios.size()+1)) {
+						
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("Comando inválido, tente novamente. \n");		
+				}
+			}catch(Exception e) {
 				System.out.println("------------------------------------------|");
 				System.out.print("Comando inválido, tente novamente. \n");		
 			}
-		}catch(Exception e) {
-			System.out.println("------------------------------------------|");
-			System.out.print("Comando inválido, tente novamente. \n");		
 		}
+		else {}
 	}
 
 

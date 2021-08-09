@@ -27,35 +27,34 @@ public class BancoCliente {
 		System.out.println("------------------------------------------|");
 		for(int i = 0; i < clientes.size() && clientes.size() > 0; i++) {
 			System.out.println("["+clientes.get(i).getIdCliente()+"]"+"->"+clientes.get(i).getNome());
-		}
-		System.out.println("["+(clientes.size()+1)+"]->Sair");
-			
+		}			
 	}
 	
 	public static void expandUsers() {
-		
 		System.out.println("------------------------------------------|");
-		System.out.print("Expandir item: ");
-		try {
-			int expand = Integer.parseInt(read.next());
-			if(expand <= clientes.size() && expand > 0) {
-				System.out.println("------------------------------------------|");
-				System.out.println("Nome: "+clientes.get(expand-1).getNome());
-				System.out.println("Senha: "+clientes.get(expand-1).getSenha());
-				System.out.println("Admin: "+clientes.get(expand-1).isPermissoes());
-			}
-			else if(expand == (clientes.size()+1)) {
-					
-			}
-			else {
+		System.out.print("Deseja Expandir algum item? (S/N): ");
+		String cmdExpand = read.nextLine();
+		if(cmdExpand.equals("s") || cmdExpand.equals("S")) {
+			System.out.println("------------------------------------------|");
+			System.out.print("Expandir item: ");
+			try {
+				int expand = Integer.parseInt(read.next());
+				if(expand <= clientes.size() && expand > 0) {
+					System.out.println("------------------------------------------|");
+					System.out.println("Nome: "+clientes.get(expand-1).getNome());
+					System.out.println("Senha: "+clientes.get(expand-1).getSenha());
+					System.out.println("Admin: "+clientes.get(expand-1).isPermissoes());
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("O usuário não foi encontrado.\n");		
+				}
+			}catch(Exception e) {
 				System.out.println("------------------------------------------|");
 				System.out.print("Comando inválido, tente novamente. \n");		
 			}
-		}catch(Exception e) {
-			System.out.println("------------------------------------------|");
-			System.out.print("Comando inválido, tente novamente. \n");		
 		}
-		
+		else {}
 	}
 
 	public static void removerUser(int remove) {

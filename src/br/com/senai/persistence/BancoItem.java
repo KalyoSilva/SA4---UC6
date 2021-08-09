@@ -31,32 +31,37 @@ public class BancoItem {
 		for(int i = 0; i < itens.size() && itens.size() > 0; i++) {
 			System.out.println("["+itens.get(i).getId()+"]"+"->"+itens.get(i).getNome());
 		}
-		System.out.println("["+(itens.size()+1)+"]->Sair");
 			
 	}
 	
 	public void ExpandItem(){ // seleciona um item da lista e mostra seus detalhes
 		System.out.println("------------------------------------------|");
-		System.out.print("Expandir item: ");
-		try {
-			int expand = Integer.parseInt(input.next());
-			if(expand <= itens.size() && expand > 0) {
-				System.out.println("------------------------------------------|");
-				System.out.println("Nome: "+itens.get(expand-1).getNome());
-				System.out.println("Quantidade: "+itens.get(expand-1).getQtd());
-				System.out.println("Valor p/Unidade: "+itens.get(expand-1).getValorUnidade());
-				System.out.println("Descrição Item: "+itens.get(expand-1).getDesc());
-			}
-			else if(expand == (itens.size()+1)) {
-					
-			}
-			else {
+		System.out.print("Deseja Expandir algum item? (S/N): ");
+		String cmdExpand = input.nextLine();
+		if(cmdExpand.equals("s") || cmdExpand.equals("S")) {
+			System.out.println("------------------------------------------|");
+			System.out.print("Expandir item: ");
+			try {
+				int expand = Integer.parseInt(input.next());
+				if(expand <= itens.size() && expand > 0) {
+					System.out.println("------------------------------------------|");
+					System.out.println("Nome: "+itens.get(expand-1).getNome());
+					System.out.println("Quantidade: "+itens.get(expand-1).getQtd());
+					System.out.println("Valor p/Unidade: "+itens.get(expand-1).getValorUnidade());
+					System.out.println("Descrição Item: "+itens.get(expand-1).getDesc());
+				}
+				else if(expand == (itens.size()+1)) {
+						
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("Comando inválido, tente novamente. \n");		
+				}
+			}catch(Exception e) {
 				System.out.println("------------------------------------------|");
 				System.out.print("Comando inválido, tente novamente. \n");		
 			}
-		}catch(Exception e) {
-			System.out.println("------------------------------------------|");
-			System.out.print("Comando inválido, tente novamente. \n");		
 		}
+		else {}
 	}
 }
