@@ -65,7 +65,7 @@ public class Cliente extends Pessoa {
 			}
 			} else {
 				System.out.println("------------------------------------------|");
-				System.out.print("Nenhum item cadastrado no estoque!\n");	
+				System.out.print("Nenhum cliente cadastrado no estoque!\n");	
 			}
 		
 	}
