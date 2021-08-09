@@ -29,23 +29,23 @@ public class GerenciamentoDeProduto {
 		switch (read.nextInt()) {
 		case 1:
 			adicionarProduto();
+			menuGerenciamento();
 			break;
 		case 2:
 			removerProduto();
+			menuGerenciamento();
 			break;
 		case 3:
 			listarProduto();
+			menuGerenciamento();
 			break;
 		case 4:
-			Menu menu = new Menu();
-			menu.menu();
+			Menu.menu();
 			break;
 		default:
 			System.out.println("Comando inválido, tente novamente!");
 			break;
 		}
-		menuGerenciamento();
-		read.nextLine();
 
 	}
 	

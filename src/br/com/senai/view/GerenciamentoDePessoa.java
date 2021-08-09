@@ -29,26 +29,27 @@ public class GerenciamentoDePessoa {
 		switch (read.nextInt()) {
 		case 1:
 			addPessoa();
+			menuPessoa();
 			break;
 		case 2:
 			removePessoa();
+			menuPessoa();
 			break;
 		case 3:
 			consultaPessoa();
+			menuPessoa();
 			break;
 		case 4:
 			System.out.println("essa função irá ser adicionada quando\nimplementarmos o banco de dados.");
+			menuPessoa();
 			break;
 		case 5:
-			Menu menu = new Menu();
-			menu.menu();
+			Menu.menu();
 			break;
 		default:
 			System.out.println("Comando inválido, tente novamente!");
 			break;
 		}
-		menuPessoa();
-		read.nextLine();
 
 	}
 	
@@ -80,10 +81,22 @@ public class GerenciamentoDePessoa {
 			read.nextLine();
 			String tipoUser = read.nextLine();
 			if(tipoUser.equals("C") || tipoUser.equals("c")){
+				if(BancoCliente.clientes.size() > 0) {
 				Cliente.addCliente();
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("Nenhum cliente cadastrado no sistema!\n");	
+				}
 			}
 			else if(tipoUser.equals("F") || tipoUser.equals("f")) {
+				if(BancoCliente.clientes.size() > 0) {
 				Funcionario.addFuncionario();
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("Nenhum funcionário cadastrado no sistema!\n");	
+				}
 			}
 			
 		} catch (InputMismatchException ex) {
@@ -101,12 +114,24 @@ public class GerenciamentoDePessoa {
 			read.nextLine();
 			String tipoUser = read.nextLine();
 			if(tipoUser.equals("C") || tipoUser.equals("c")){
-				BancoCliente.listaUsers();
-				BancoCliente.expandUsers();
+				if(BancoCliente.clientes.size() > 0) {
+					BancoCliente.listaUsers();
+					BancoCliente.expandUsers();
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("Nenhum cliente cadastrado no sistema!\n");	
+				}
 			}
 			else if(tipoUser.equals("F") || tipoUser.equals("f")) {
+				if(BancoCliente.clientes.size() > 0) {
 				BancoFuncionario.listaFuncio();
 				BancoFuncionario.expandFuncio();
+				}
+				else {
+					System.out.println("------------------------------------------|");
+					System.out.print("Nenhum funcionário cadastrado no sistema!\n");	
+				}
 			}
 			
 		} catch (InputMismatchException ex) {

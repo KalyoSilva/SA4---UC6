@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Menu {
 
 
-	public void menu() {
+	public static void menu() {
 		
 		// utilizando StringBuilder por pura estética.
 		StringBuilder builder = new StringBuilder();
@@ -32,11 +32,11 @@ public class Menu {
 			gerPes.menuPessoa();
 			break;
 		case 3:
+			System.out.println("Programa Finalizado.");
 			break;
 		default:
 			break;
 		}
-		System.out.print("Programa Finalizado");
 		read.close();
 	}
 }
