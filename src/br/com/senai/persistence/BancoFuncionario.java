@@ -51,6 +51,7 @@ public class BancoFuncionario {
 		if(cmdExpand.equals("s") || cmdExpand.equals("S")) {
 			System.out.println("------------------------------------------|");
 			System.out.print("Expandir item: ");
+			//Try pegando as informações dos funcionarios para expandir. 
 			try {
 				int expand = Integer.parseInt(read.next());
 				if(expand <= funcionarios.size() && expand > 0) {

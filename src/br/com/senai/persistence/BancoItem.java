@@ -41,6 +41,7 @@ public class BancoItem {
 		if(cmdExpand.equals("s") || cmdExpand.equals("S")) {
 			System.out.println("------------------------------------------|");
 			System.out.print("Expandir item: ");
+			//Try pegando as informações dos itens para expandir. 
 			try {
 				int expand = Integer.parseInt(input.next());
 				if(expand <= itens.size() && expand > 0) {
