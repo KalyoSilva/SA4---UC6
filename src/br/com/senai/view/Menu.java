@@ -7,7 +7,7 @@ public class Menu {
 
 	public static void menu() {
 		
-		// utilizando StringBuilder por pura estÃ©tica.
+		// utilizando StringBuilder por pura estética.
 		StringBuilder builder = new StringBuilder();
 		Scanner read = new Scanner(System.in);
 		builder.append("------------------------------------------|\n");
@@ -21,7 +21,7 @@ public class Menu {
 		System.out.print(builder.toString());
 		
 		
-		// Switch utilizado para as opÃ§Ãµes do menu
+		// Switch utilizado para as opções do menu
 		switch(read.nextInt()) {
 		case 1:
 			GerenciamentoDeProduto ger = new GerenciamentoDeProduto();

@@ -135,7 +135,7 @@ public class GerenciamentoDePessoa {
 			}
 			
 		} catch (InputMismatchException ex) {
-			System.out.println("Um erro ocorreu, tente novamente."); // Caso de valor inválido
+			System.out.println("Um erro ocorreu, tente novamente."); // Se der um valor inválido
 		}
 		
 	}

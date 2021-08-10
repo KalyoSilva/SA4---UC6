@@ -12,7 +12,7 @@ public class Login {
 	public static void main(String[] args) {
 		
 		
-			boolean flag = true; // Declarando variavel flag.
+			boolean flag = true; // Flag para verificar Admin.
 		
 			// Input de usuário e senha.
 			Scanner read = new Scanner(System.in);
