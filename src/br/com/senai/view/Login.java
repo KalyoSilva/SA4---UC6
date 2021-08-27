@@ -11,7 +11,10 @@ public class Login {
 
 	public static void main(String[] args) {
 		
-		
+			conexao con = new conexao();
+			String sql = "INSERT INTO item (idItem, NomeItem, QtdItem, ValorItem, Descricaoitem)"+
+					     "VALUES (1,'Mesa',30,200,'Leve')";
+			con.executaSQL(sql);
 			boolean flag = true; // Flag para verificar Admin.
 		
 			// Input de usuário e senha.
