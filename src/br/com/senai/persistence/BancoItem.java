@@ -29,7 +29,7 @@ public class BancoItem {
 		System.out.println("             ITENS CADASTRADOS            |");
 		System.out.println("------------------------------------------|");
 		for(int i = 0; i < itens.size() && itens.size() > 0; i++) {
-			System.out.println("["+itens.get(i).getId()+"]"+"->"+itens.get(i).getNome());
+			System.out.println("["+(i+1)+"]"+"->"+itens.get(i).getNome());
 		}
 			
 	}
@@ -50,6 +50,7 @@ public class BancoItem {
 					System.out.println("Quantidade: "+itens.get(expand-1).getQtd());
 					System.out.println("Valor p/Unidade: "+itens.get(expand-1).getValorUnidade());
 					System.out.println("Descrição Item: "+itens.get(expand-1).getDesc());
+					input.nextLine();
 				}
 				else if(expand == (itens.size()+1)) {
 						
