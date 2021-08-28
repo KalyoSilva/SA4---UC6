@@ -66,7 +66,12 @@ public class GerenciamentoDeProduto {
 			read.nextLine();
 			System.out.print("Informe a descrição do produto: ");
 			item.setDesc(read.nextLine());
+			conexao con = new conexao();
+			String sql = "INSERT INTO item (NomeItem, QtdItem, ValorItem, Descricaoitem)"+
+					     "VALUES ('"+item.getNome()+"',"+item.getQtd()+","+item.getValorUnidade()+","+"'"+item.getDesc()+"')";
+			con.executaSQL(sql);
 			item.setId(BancoItem.itens.size()+1);
+
 			// Item sendo adicionado ao banco
 			banco.adicionarItem(item);
 		} catch (InputMismatchException ex) {
@@ -85,6 +90,9 @@ public class GerenciamentoDeProduto {
 		try {
 			int remove = Integer.parseInt(read.next());
 			if(remove <= BancoItem.itens.size() && remove > 0) {
+				conexao con = new conexao();
+				String sql = "DELETE FROM item WHERE iditem ="+remove;
+				con.executaSQL(sql);
 				BancoItem.removerItem(remove);
 				System.out.println("item removido com Sucesso!");
 			}
