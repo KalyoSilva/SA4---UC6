@@ -28,14 +28,19 @@ public class Menu {
 			ger.menuGerenciamento();
 			break;
 		case 2:
-			GerenciamentoDePessoa gerPes = new GerenciamentoDePessoa();
-			gerPes.menuPessoa();
-			break;
+			if(Login.flag == false) {
+				GerenciamentoDePessoa gerPes = new GerenciamentoDePessoa();
+				gerPes.menuPessoa();
+				break;
+			}
+			else {
+				System.out.println("Usuário inválido.");
+				menu();
+			}
 		case 3:
-			System.out.println("Programa Finalizado.");
 			break;
 		default:
-			break;
+			menu();
 		}
 		read.close();
 	}

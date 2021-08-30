@@ -28,13 +28,27 @@ public class GerenciamentoDeProduto {
 		// Switch utilizado para as opções de gerenciamento.
 		switch (read.nextInt()) {
 		case 1:
-			adicionarProduto();
-			menuGerenciamento();
+			if(Login.flag == false) {
+				adicionarProduto();
+				menuGerenciamento();
 			break;
+			}
+			else {
+				System.out.println("Usuário inválido.");
+				menuGerenciamento();
+				break;
+			}
 		case 2:
+			if(Login.flag == false) {
 			removerProduto();
 			menuGerenciamento();
 			break;
+			}
+			else {
+				System.out.println("Usuário inválido.");
+				menuGerenciamento();
+				break;
+			}
 		case 3:
 			listarProduto();
 			menuGerenciamento();

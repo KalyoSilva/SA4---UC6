@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.senai.model.Cliente;
 import br.com.senai.model.Funcionario;
+import br.com.senai.persistence.BancoCliente;
 import br.com.senai.persistence.BancoFuncionario;
 
 public class Login {
+
+	public static boolean flag;
+	public static boolean flag2;
 
 	public static void main(String[] args) {
 		
 			conexao con = new conexao();
 			con.getSQL();
-			boolean flag = true; // Flag para verificar Admin.
+			flag = true; // Flag para verificar Admin.
+			flag2 = true;
 		
 			// Input de usuário e senha.
 			Scanner read = new Scanner(System.in);
@@ -44,9 +50,24 @@ public class Login {
 					}
 				}
 				
+				BancoCliente bancoC = new BancoCliente(); // Declarando banco na classe BancoFuncionario.
+				List<Cliente> listaC = new ArrayList<>(); // Declarando lista de funcionários com o tipo arraylist.
+				listaC = bancoC.getClientes(); // Lista está pegando os funcionários cadastrados.
+				
+				for (Cliente client : listaC) {
+					
+					// Condição para validação de usuário Administrador.			
+					if(client.getNome().equals(user) && client.getSenha().equals(senha)) {
+						System.out.println("\ncliente Logado!\n");
+						Menu.menu();
+						flag2 = false;
+						break;
+					}
+				}
+				
 				// Condição para usuário administrador inválido (Utilizando flag).
 				
-				if(flag) {
+				if(flag && flag2) {
 					System.out.println("\nUsuário ou senha incorreto");
 				}
 				else {

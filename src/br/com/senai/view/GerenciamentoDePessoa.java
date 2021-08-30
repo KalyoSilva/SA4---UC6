@@ -20,8 +20,7 @@ public class GerenciamentoDePessoa {
 		builder.append("(1) Cadastrar Usuário \n");
 		builder.append("(2) Remover Usuário\n");
 		builder.append("(3) Consultar Usuários\n");
-		builder.append("(4) Logar Usuário\n");
-		builder.append("(5) Voltar \n");
+		builder.append("(4) Voltar \n");
 		builder.append(" \nEscolha uma opção: ");
 		System.out.print(builder);
 		
@@ -40,10 +39,6 @@ public class GerenciamentoDePessoa {
 			menuPessoa();
 			break;
 		case 4:
-			System.out.println("essa função irá ser adicionada quando\nimplementarmos o banco de dados.");
-			menuPessoa();
-			break;
-		case 5:
 			Menu.menu();
 			break;
 		default:
