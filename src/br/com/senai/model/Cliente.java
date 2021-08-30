@@ -3,6 +3,7 @@ package br.com.senai.model;
 import java.util.Scanner;
 
 import br.com.senai.persistence.BancoCliente;
+import br.com.senai.view.conexao;
 
 public class Cliente extends Pessoa {
 	
@@ -24,8 +25,12 @@ public class Cliente extends Pessoa {
 		System.out.print("Informe a senha do Cliente: ");
 		client.setSenha(read.nextLine());
 		client.setPermissoes(false);
+		conexao con = new conexao();
 		int idCliente = (BancoCliente.clientes.size()+1);
 		client.setIdCliente(idCliente);
+		String sql = "INSERT INTO cliente (idcliente,nomecliente, senhacliente)"+
+				     "VALUES ("+client.getIdCliente()+",'"+client.getNome()+"','"+client.getSenha()+"')";
+		con.executaSQL(sql);
 		BancoCliente.adicionaCliente(client);
 		
 	}
@@ -50,6 +55,9 @@ public class Cliente extends Pessoa {
 			try {
 				int remove = Integer.parseInt(read.next());
 				if(remove <= BancoCliente.clientes.size() && remove > 0) {
+					conexao con = new conexao();
+					String sql = "DELETE FROM cliente WHERE idcliente ="+remove;
+					con.executaSQL(sql);
 					BancoCliente.removerUser(remove);
 					System.out.println("Usuário removido com Sucesso!");
 				}

@@ -3,6 +3,7 @@ package br.com.senai.model;
 import java.util.Scanner;
 
 import br.com.senai.persistence.BancoFuncionario;
+import br.com.senai.view.conexao;
 
 public class Funcionario extends Pessoa {
 	
@@ -25,8 +26,12 @@ public class Funcionario extends Pessoa {
 		System.out.print("Informe a senha do funcionário: ");
 		funcio.setSenha(read.nextLine());
 		funcio.setPermissoes(true);
+		conexao con = new conexao();
 		int idFuncio = (BancoFuncionario.funcionarios.size()+1);
 		funcio.setIdFuncionario(idFuncio);
+		String sql = "INSERT INTO funcionario (idfuncionario,nomefuncionario, senhafuncionario)"+
+				     "VALUES ("+funcio.getIdFuncionario()+",'"+funcio.getNome()+"','"+funcio.getSenha()+"')";
+		con.executaSQL(sql);
 		BancoFuncionario.adicionaFuncionario(funcio);
 	}
 
@@ -49,6 +54,9 @@ public class Funcionario extends Pessoa {
 			try {
 				int remove = Integer.parseInt(read.next());
 				if(remove <= BancoFuncionario.funcionarios.size() && remove > 0) {
+					conexao con = new conexao();
+					String sql = "DELETE FROM funcionario WHERE idfuncionario ="+remove;
+					con.executaSQL(sql);
 					BancoFuncionario.removerFuncio(remove);
 					System.out.println("Usuário removido com Sucesso!");
 				}
