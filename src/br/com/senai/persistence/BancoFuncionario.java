@@ -37,9 +37,8 @@ public class BancoFuncionario {
 		System.out.println("        FUNCIONÁRIOS CADASTRADOS          |");
 		System.out.println("------------------------------------------|");
 		for(int i = 0; i < funcionarios.size() && funcionarios.size() > 0; i++) {
-			System.out.println("["+funcionarios.get(i).getIdFuncionario()+"]"+"->"+funcionarios.get(i).getNome());
+			System.out.println("["+(i+1)+"]"+"->"+funcionarios.get(i).getNome());
 		}
-		System.out.println("["+(funcionarios.size()+1)+"]->Sair");
 			
 	}
 
@@ -47,7 +46,6 @@ public class BancoFuncionario {
 		System.out.println("------------------------------------------|");
 		System.out.print("Deseja Expandir algum item? (S/N): ");
 		String cmdExpand = read.nextLine();
-		System.out.println("------------------------------------------|");
 		if(cmdExpand.equals("s") || cmdExpand.equals("S")) {
 			System.out.println("------------------------------------------|");
 			System.out.print("Expandir item: ");
@@ -60,17 +58,15 @@ public class BancoFuncionario {
 					System.out.println("Senha: "+funcionarios.get(expand-1).getSenha());
 					System.out.println("Admin: "+funcionarios.get(expand-1).isPermissoes());
 				}
-				else if(expand == (funcionarios.size()+1)) {
-						
-				}
 				else {
 					System.out.println("------------------------------------------|");
 					System.out.print("Comando inválido, tente novamente. \n");		
-				}
+				}			
 			}catch(Exception e) {
 				System.out.println("------------------------------------------|");
 				System.out.print("Comando inválido, tente novamente. \n");		
 			}
+			read.nextLine();
 		}
 		else {}
 	}

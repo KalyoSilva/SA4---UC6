@@ -26,7 +26,7 @@ public class BancoCliente {
 		System.out.println("          CLIENTES CADASTRADOS            |");
 		System.out.println("------------------------------------------|");
 		for(int i = 0; i < clientes.size() && clientes.size() > 0; i++) {
-			System.out.println("["+clientes.get(i).getIdCliente()+"]"+"->"+clientes.get(i).getNome());
+			System.out.println("["+(i+1)+"]"+"->"+clientes.get(i).getNome());
 		}			
 	}
 	
