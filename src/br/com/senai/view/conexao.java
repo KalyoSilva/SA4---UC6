@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import br.com.senai.model.Cliente;
+import br.com.senai.model.Funcionario;
 import br.com.senai.model.Item;
+import br.com.senai.persistence.BancoCliente;
+import br.com.senai.persistence.BancoFuncionario;
 
 public class conexao {
 	private String url;
@@ -12,7 +17,7 @@ public class conexao {
 	private String senha;
 	private Connection con;
 	
-	conexao(){
+	public conexao(){
 		url = "jdbc:postgresql://localhost:5432/estoque";
 		usuario = "postgres";
 		senha = "2322";
@@ -50,6 +55,28 @@ public class conexao {
 				item.setDesc(rs.getString("descricaoitem"));	
 				GerenciamentoDeProduto.banco.adicionarItem(item);
 				
+			}
+			
+			PreparedStatement stmUsers = con.prepareStatement("select * from cliente");
+			ResultSet rsUser =  stmUsers.executeQuery();
+			while(rsUser.next()) {
+				Cliente client = new Cliente();
+				
+				client.setIdCliente(rsUser.getInt("idcliente"));
+				client.setNome(rsUser.getString("nomecliente"));
+				client.setSenha(rsUser.getString("senhacliente"));
+				BancoCliente.adicionaCliente(client);
+			}
+			
+			PreparedStatement stmFun = con.prepareStatement("select * from funcionario");
+			ResultSet rsFun =  stmFun.executeQuery();
+			while(rsFun.next()) {
+				Funcionario fun = new Funcionario();
+				
+				fun.setIdFuncionario(rsFun.getInt("idfuncionario"));
+				fun.setNome(rsFun.getString("nomefuncionario"));
+				fun.setSenha(rsFun.getString("senhafuncionario"));
+				BancoFuncionario.adicionaFuncionario(fun);
 			}
 			con.close();
 		} catch (Exception e) {
