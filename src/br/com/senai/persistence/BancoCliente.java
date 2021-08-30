@@ -17,7 +17,7 @@ public class BancoCliente {
 		clientes.add(client);
 	}
 		
-	public List<Cliente> getFuncionario(){
+	public List<Cliente> getClientes(){
 		return clientes;
 	}
 	
